@@ -48,6 +48,7 @@ parse_args <- function(x){
 #' @return output Data frame
 
 read_delim_flexible <- function(file, header = TRUE, row.names = NULL, check.names = TRUE){
+    paste0("--- Reading ", file, " ---")                                                                                 
 
     ext <- tolower(tail(strsplit(basename(file), split = "\\\\.")[[1]], 1))
 
@@ -195,6 +196,7 @@ library(BiocParallel)
 ################################################
 ################################################
 
+paste0("--- Reading count.table: ", opt\$count_file, " ---")                                                                                                                                                                 
 count.table <-
     read_delim_flexible(
         file = opt\$count_file,
@@ -202,6 +204,7 @@ count.table <-
         row.names = opt\$gene_id_col,
         check.names = FALSE
     )
+paste0("--- Reading sample.sheet: ", opt\$sample_file, " ---")                                                                                 
 sample.sheet <- read_delim_flexible(file = opt\$sample_file)
 
 # Deal with spaces that may be in sample column
@@ -345,6 +348,8 @@ dds <- DESeqDataSetFromMatrix(
 # https://github.com/thelovelab/DESeq2/blob/6947d5bc629015fb8ffb2453a91b71665a164483/R/AllClasses.R#L409
 
 if (opt\$transcript_lengths_file != ''){
+    paste0("--- Reading transcript lengths: ", opt\$transcript_lengths_file, " ---")                                                                                 
+
     lengths <-
         read_delim_flexible(
             file = opt\$transcript_lengths_file,
