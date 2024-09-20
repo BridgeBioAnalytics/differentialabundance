@@ -48,6 +48,7 @@ parse_args <- function(x){
 #' @return output Data frame
 
 read_delim_flexible <- function(file, header = TRUE, row.names = NULL, check.names = TRUE){
+    paste0("--- Reading ", file, " ---")                                                                                 
 
     ext <- tolower(tail(strsplit(basename(file), split = "\\\\.")[[1]], 1))
 
